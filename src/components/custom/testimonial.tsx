@@ -64,8 +64,8 @@ const Testimonial = () => {
   });
   return (
     <div className="mb-10">
-      <Reveal>
-        <h1 className="flex-1 text-center text-2xl font-serif whitespace-nowrap mb-6">
+      <Reveal wrapper hidden={{ y: -50 }}>
+        <h1 className="text-center text-3xl font-serif mb-6">
           From our travellers
         </h1>
       </Reveal>

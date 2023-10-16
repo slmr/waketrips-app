@@ -19,8 +19,7 @@ const Footer = () => {
           </Link>
         </Reveal>
       </div>
-
-      <nav className="relative max-w-lg mx-auto px-4 py-8">
+      <div className="relative">
         <Reveal
           visible={{ width: "100%" }}
           hidden={{ width: "0%" }}
@@ -29,16 +28,30 @@ const Footer = () => {
         >
           <div className="h-[1px] bg-slate-500" />
         </Reveal>
-        <Reveal>
-          <ul className="flex flex-wrap gap-6 justify-around items-center whitespace-nowrap uppercase font-sans font-thin text-sm">
-            <li>Destinations</li>
-            <li>Inspiration</li>
-            <li>About Us</li>
-            <li>Why Us</li>
-            <li>Booking Conditions</li>
-            <li>Travel Insurance</li>
-          </ul>
-        </Reveal>
+        <nav className="relative max-w-xl mx-auto px-4 py-8">
+          <Reveal>
+            <ul className="flex flex-wrap gap-10 justify-around items-center whitespace-nowrap uppercase font-mono text-xs tracking-widest">
+              <li>
+                <Link href="/">Destinations</Link>
+              </li>
+              <li>
+                <Link href="/">Inspiration</Link>
+              </li>
+              <li>
+                <Link href="/">About Us</Link>
+              </li>
+              <li>
+                <Link href="/">Why Us</Link>
+              </li>
+              <li>
+                <Link href="/">Booking Conditions</Link>
+              </li>
+              <li>
+                <Link href="/">Travel Insurance</Link>
+              </li>
+            </ul>
+          </Reveal>
+        </nav>
         <Reveal
           visible={{ width: "100%" }}
           hidden={{ width: "0%" }}
@@ -47,27 +60,27 @@ const Footer = () => {
         >
           <div className="h-[1px] bg-slate-500" />
         </Reveal>
-      </nav>
+      </div>
+
       <div className="relative">
         <Reveal>
-          <div className="grid grid-cols-2 whitespace-nowrap uppercase font-sans font-thin text-sm">
-            <div className="p-4 flex flex-col items-center justify-center border-r border-slate-500">
-              <span className="font-sans tracking-wider">Telepon / Wa</span>
+          <div className="grid grid-cols-2 whitespace-nowrap font-sans text-sm">
+            <div className="p-4 md:p-10 flex flex-col items-center justify-center md:justify-self-end border-r border-slate-500">
+              <span className="font-mono tracking-wider uppercase">
+                Telepon/Wa
+              </span>
               <a
                 href="https://api.whatsapp.com/send?phone=6281949477937&text=Halo%20WakeTrips%2C%20Saya%20ingin%20membeli%20paket%20liburan%20ke%20Belitung%20...%20"
                 target="_blank"
                 rel="noopener"
-                className="font-serif text-gray-200"
+                className="font-serif text-lg"
               >
                 +6281949477937
               </a>
             </div>
-            <div className="p-4 flex flex-col items-center justify-center">
-              <span className="font-sans tracking-wider">Email</span>
-              <a
-                href="mailto: affri@gmail.com"
-                className="font-serif lowercase text-gray-200"
-              >
+            <div className="p-4 md:p-10 flex flex-col items-center justify-center md:justify-self-start">
+              <span className="font-mono tracking-wider uppercase">Email</span>
+              <a href="mailto: affri@gmail.com" className="font-serif text-lg">
                 waketrips@gmail.com
               </a>
             </div>
@@ -100,9 +113,13 @@ const Footer = () => {
             <Instagram className="w-5 h-5" strokeWidth={1} />
           </a>
         </div>
-        <div className="flex flex-wrap gap-4 items-center justify-center uppercase font-sans font-thin text-sm">
-          <div>Cookies</div>
-          <div>Privacy</div>
+        <div className="flex flex-wrap gap-4 items-center justify-center uppercase font-sans text-xs tracking-widest">
+          <div>
+            <Link href="/">Cookies</Link>
+          </div>
+          <div>
+            <Link href="/">Privacy</Link>
+          </div>
           <div className="text-center">
             © 2023 WakeTrips. All rights Reserved
           </div>

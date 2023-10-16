@@ -4,19 +4,25 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Phone, Star } from "lucide-react";
 import { Button } from "../ui/button";
+import Reveal from "./reveal";
 
 const HomeMain = () => {
   return (
     <div className="relative h-full justify-center flex items-center flex-col">
-      <div className="flex items-center text-white w-full">
+      <div className="hidden md:flex items-center justify-between font-mono text-xs tracking-wider uppercase text-white w-full relative px-4 py-3">
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.2, duration: 0.6, ease: "easeIn" }}
-          className="flex-1 relative px-4 py-3"
-        >
-          <div className="w-3/4 flex flex-col gap-1 sm:gap-2 ">
+          animate={{ width: "100%" }}
+          initial={{ width: "0%" }}
+          transition={{
+            delay: 0.3,
+            duration: 0.6,
+            ease: "linear",
+            origin: 1,
+          }}
+          className="absolute left-1/2 right-1/2 -translate-x-1/2 bottom-0 h-[1px] bg-gray-300"
+        />
+        <Reveal>
+          <div className="flex items-center gap-3">
             <div className="flex items-center justify-center gap-0">
               {[1, 2, 3, 4, 5].map((rate) => (
                 <Star
@@ -27,55 +33,21 @@ const HomeMain = () => {
                 />
               ))}
             </div>
-            <div className="font-sans font-thin text-xs tracking-wide uppercase text-center">
-              Customer Rating
-            </div>
+            <div>Customer Rating</div>
           </div>
-
-          <motion.div
-            animate={{ width: "100%" }}
-            initial={{ width: "0%" }}
-            transition={{
-              delay: 0.3,
-              duration: 0.6,
-              ease: "linear",
-              origin: 1,
-            }}
-            className="absolute left-1/2 right-1/2 -translate-x-1/2 bottom-0 h-[1px] bg-gray-300"
-          />
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.2, duration: 0.6, ease: "easeIn" }}
-          className="flex-1 relative px-4 py-3"
-        >
-          <div className="w-3/4 ml-auto flex items-center flex-col gap-1 sm:gap-2 ">
+        </Reveal>
+        <Reveal>
+          <a
+            href="https://api.whatsapp.com/send?phone=6281949477937&text=Halo%20WakeTrips%2C%20Saya%20ingin%20membeli%20paket%20liburan%20ke%20Belitung%20...%20"
+            target="_blank"
+            rel="noopener"
+            className="flex items-center justify-end gap-4"
+          >
+            <div>Speak to our Expert</div>
             <Phone className="h-4 w-4" />
-            <div className="font-sans font-thin text-xs tracking-wide uppercase text-center">
-              <a
-                href="https://api.whatsapp.com/send?phone=6281949477937&text=Halo%20WakeTrips%2C%20Saya%20ingin%20membeli%20paket%20liburan%20ke%20Belitung%20...%20"
-                target="_blank"
-                rel="noopener"
-                className="font-serif text-gray-200"
-              >
-                +6281949477937
-              </a>
-            </div>
-            <motion.div
-              animate={{ width: "100%" }}
-              initial={{ width: "0%" }}
-              transition={{
-                delay: 0.3,
-                duration: 0.6,
-                ease: "linear",
-                origin: 1,
-              }}
-              className="absolute left-1/2 right-1/2 -translate-x-1/2 bottom-0 h-[1px] bg-gray-300"
-            />
-          </div>
-        </motion.div>
+            +6281949477937
+          </a>
+        </Reveal>
       </div>
       <div className="flex-1">
         <motion.div
@@ -86,30 +58,34 @@ const HomeMain = () => {
         />
       </div>
 
-      <motion.div
-        transition={{ delay: 0.5, duration: 0.6, ease: "easeIn" }}
-        className="text-center my-6"
-      >
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.7, duration: 0.6, ease: "easeIn" }}
-          className={`mb-4 max-w-[25ch] font-light text-center font-sans text-lg md:text-2xl`}
-        >
-          Gerbang Anda menuju Petualangan di Belitung
-        </motion.p>
+      <div className="text-center my-6">
+        <Reveal wrapper hidden={{ y: -60 }}>
+          <h1 className="font-serif text-3xl md:text-5xl text-center mb-3">
+            Everyone Can Trip
+          </h1>
+        </Reveal>
+        <Reveal>
+          <p
+            className={`mb-4 max-w-[22ch] mx-auto md:max-w-full text-center font-sans tracking-wide text-lg md:text-xl`}
+          >
+            Gerbang Anda Menuju Petualangan di Belitung
+          </p>
+        </Reveal>
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
           transition={{ delay: 0.9, duration: 0.6, ease: "easeIn" }}
         >
-          <Button variant="outline" size="lg" className="uppercase">
+          <Button
+            variant="outline"
+            size="lg"
+            className="uppercase px-7 tracking-wider"
+          >
             Mulai Jelajah
           </Button>
         </motion.div>
-      </motion.div>
+      </div>
       <div className="flex-1 relative">
         <motion.div
           animate={{ height: "100%" }}
@@ -122,7 +98,7 @@ const HomeMain = () => {
           className="absolute bottom-0 w-[1px] bg-gray-300"
         />
       </div>
-      <div className="relative grid grid-cols-2 text-white w-full px-4 py-4">
+      <div className="hidden md:flex items-center justify-center gap-16 font-mono text-xs tracking-wider uppercase relative text-white w-full px-4 py-4">
         <motion.div
           animate={{ width: "100%" }}
           initial={{ width: "0%" }}
@@ -134,24 +110,18 @@ const HomeMain = () => {
           }}
           className="absolute left-1/2 right-1/2 -translate-x-1/2 top-0 h-[1px] bg-gray-300"
         />
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.2, duration: 0.6, ease: "easeIn" }}
-          className="text-center font-sans font-thin text-xs tracking-wide uppercase"
-        >
-          Tentang Kami
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          transition={{ delay: 0.2, duration: 0.6, ease: "easeIn" }}
-          className="text-center font-sans font-thin text-xs tracking-wide uppercase"
-        >
-          Kenapa Pilih Kami
-        </motion.div>
+        <Reveal>
+          <div>Tentang Kami</div>
+        </Reveal>
+        <Reveal>
+          <div>Harga Menjanjikan</div>
+        </Reveal>
+        <Reveal>
+          <div>Reviews</div>
+        </Reveal>
+        <Reveal>
+          <div>Kenapa Pilih Kami</div>
+        </Reveal>
       </div>
     </div>
   );

@@ -40,11 +40,11 @@ const OutPartners = () => {
           hidden={{ width: "0%" }}
           visible={{ width: "100%" }}
         >
-          <motion.div className="bg-gray-300 h-[1px]" />
+          <motion.div className="bg-gray-200 h-[1px]" />
         </Reveal>
         <div className="py-6">
-          <Reveal>
-            <h1 className="text-center text-2xl font-serif ">Partner Kami</h1>
+          <Reveal wrapper hidden={{ y: -50 }}>
+            <h1 className="text-center text-3xl font-serif ">Partner Kami</h1>
           </Reveal>
         </div>
         <Reveal
@@ -52,7 +52,7 @@ const OutPartners = () => {
           hidden={{ width: "0%" }}
           visible={{ width: "100%" }}
         >
-          <motion.div className="bg-gray-300 h-[1px]" />
+          <motion.div className="bg-gray-200 h-[1px]" />
         </Reveal>
       </div>
       <div className="py-4">

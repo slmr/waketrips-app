@@ -25,10 +25,10 @@ const EnquireNow = () => {
         </motion.div>
       </div>
       <div className="p-8">
-        <h4 className="text-xl font-serif text-center mb-6">
+        <h4 className="text-2xl font-serif text-center mb-6">
           Mulailah merencanakan liburan bahagia Anda
         </h4>
-        <p className="font-sans font-light text-sm text-gray-500 text-center mb-6">
+        <p className="font-sans text-gray-500 text-center mb-6">
           Bicaralah dengan salah satu spesialis perjalanan kami
         </p>
 
@@ -64,9 +64,7 @@ const EnquireNow = () => {
             </Avatar>
           </div>
           <span className="h-2 w-2 rounded-full bg-green-500"></span>
-          <span className="font-sans text-xs font-light uppercase">
-            Available Now
-          </span>
+          <span className="font-mono text-sm uppercase">Available Now</span>
         </div>
       </div>
     </div>

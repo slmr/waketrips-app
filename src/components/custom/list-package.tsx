@@ -92,31 +92,13 @@ const items = [
 
 const ListPackage = () => {
   return (
-    <div className="py-8">
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
-        <Reveal
-          className="justify-self-end"
-          hidden={{ width: "0%" }}
-          visible={{ width: "100%" }}
-        >
-          <motion.div className="bg-gray-300 h-[1px]" />
-        </Reveal>
-        <Reveal>
-          <h1 className="text-center text-2xl font-serif now whitespace-nowrap">
-            Paket Populer
-          </h1>
-        </Reveal>
-        <Reveal
-          className="ustify-self-end"
-          hidden={{ width: "0%" }}
-          visible={{ width: "100%" }}
-        >
-          <motion.div className="bg-gray-300 h-[1px]" />
-        </Reveal>
-      </div>
-      <div className="mt-4 mb-8 px-4">
+    <div className="container max-w-6xl">
+      <Reveal hidden={{ y: -50 }} wrapper>
+        <h1 className="font-serif text-3xl md:text-4xl">Paket Populer</h1>
+      </Reveal>
+      <div className="mt-4 mb-8">
         <Reveal transition={{ delay: 0.4, duration: 0.5 }}>
-          <p className="text-center text-sm font-light font-sans">
+          <p className="font-sans max-w-xl tracking-wider">
             WakeTrips menyediakan berbagai macam pilihan paket wisata Belitung
             yang dapat disesuaikan dengan budget, fasilitas dan durasi
             perjalanan yang Anda inginkan.
@@ -124,10 +106,10 @@ const ListPackage = () => {
         </Reveal>
       </div>
       <div>
-        <div className="grid grid-cols-2 gap-3 px-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
           {listPopular.map((item) => (
             <div key={item.label}>
-              <div className="relative aspect-[2/3] overflow-hidden">
+              <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
                   src={item.image}
                   fill
@@ -136,8 +118,10 @@ const ListPackage = () => {
                 />
               </div>
               <div className="pt-2 pb-4">
-                <h3 className="mb-1 font-light">{item.label}</h3>
-                <p className="text-xs font-thin text-gray-600 font-sans">
+                <h3 className="mb-1 text-lg md:text-2xl font-serif">
+                  {item.label}
+                </h3>
+                <p className="text-sm text-gray-600 font-sans">
                   {new Intl.NumberFormat("id-ID", {
                     style: "currency",
                     currency: "IDR",
@@ -148,7 +132,7 @@ const ListPackage = () => {
             </div>
           ))}
         </div>
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mt-3">
+        <div className="around-lines-grid mt-4">
           <Reveal
             className="justify-self-end"
             hidden={{ width: "0%" }}
@@ -157,15 +141,11 @@ const ListPackage = () => {
             <motion.div className="bg-gray-300 h-[1px]" />
           </Reveal>
           <Reveal>
-            <Button variant="outline" className="bg-transparent">
+            <Button variant="outline" className="uppercase tracking-wider">
               View More
             </Button>
           </Reveal>
-          <Reveal
-            className="ustify-self-end"
-            hidden={{ width: "0%" }}
-            visible={{ width: "100%" }}
-          >
+          <Reveal hidden={{ width: "0%" }} visible={{ width: "100%" }}>
             <motion.div className="bg-gray-300 h-[1px]" />
           </Reveal>
         </div>

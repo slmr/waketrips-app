@@ -10,15 +10,20 @@ const config: Config = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1rem',
+        xs: '1rem'
+      },
       screens: {
         "2xl": "1400px",
       },
     },
     extend: {
       fontFamily: {
-        serif: ['var(--font-serif)'],
-        sans: ['var(--font-sans)'],
+        serif: ['var(--font-gt-sectra)'],
+        sans: ['var(--font-gt-pressura)'],
+        mono: ['var(--font-gt-pressura-mono)'],
       },
       colors: {
         border: "hsl(var(--border))",

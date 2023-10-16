@@ -6,21 +6,25 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { cx } from "class-variance-authority";
 
 import { motion, useCycle } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
 
 const MenuItem = ({
   children,
   href = "/",
+  onClick,
   i,
 }: {
   i: number;
   children: React.ReactNode;
   href?: string;
+  onClick?: VoidFunction;
 }) => {
   return (
     <motion.li
@@ -33,7 +37,8 @@ const MenuItem = ({
     >
       <Link
         href={href}
-        className={`text-2xl text-gray-600 hover:text-yellow-500 transition`}
+        className={`font-serif text-2xl text-gray-600 hover:text-yellow-500 transition`}
+        onClick={() => onClick?.()}
       >
         {children}
       </Link>
@@ -44,14 +49,17 @@ const MenuItemBottom = ({
   children,
   href = "/",
   i,
+  onClick,
+  isActive,
 }: {
   i: number;
   children: React.ReactNode;
   href?: string;
+  onClick?: VoidFunction;
+  isActive?: boolean;
 }) => {
   return (
     <motion.li
-      key="1"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 10 }}
@@ -60,36 +68,71 @@ const MenuItemBottom = ({
     >
       <Link
         href={href}
-        className={`text-lg font-thin text-gray-700 hover:text-yellow-500 transition`}
+        className={cx(
+          `font-sans text-lg font-thin text-gray-700 hover:text-yellow-500 transition`,
+          { "text-yellow-500": isActive }
+        )}
+        onClick={() => onClick?.()}
       >
         {children}
       </Link>
     </motion.li>
   );
 };
-export const Navigation = () => {
+export const Navigation = ({ onClick }: { onClick: VoidFunction }) => {
   return (
     <ul className="px-6">
-      <MenuItem i={1}>Beranda</MenuItem>
-      <MenuItem i={2}>Paket Wisata</MenuItem>
-      <MenuItem i={3}>Promo</MenuItem>
-      <MenuItem i={4}>Destinasi</MenuItem>
-      <MenuItem i={5}>Reservasi</MenuItem>
+      <MenuItem i={1} onClick={onClick}>
+        Beranda
+      </MenuItem>
+      <MenuItem i={2} onClick={onClick}>
+        Paket Wisata
+      </MenuItem>
+      <MenuItem i={3} onClick={onClick}>
+        Promo
+      </MenuItem>
+      <MenuItem i={4} onClick={onClick}>
+        Destinasi
+      </MenuItem>
+      <MenuItem i={5} onClick={onClick}>
+        Reservasi
+      </MenuItem>
     </ul>
   );
 };
-export const NavigationBottom = () => {
+export const NavigationBottom = ({
+  onClick,
+  activePath,
+}: {
+  onClick: VoidFunction;
+  activePath: string;
+}) => {
   return (
     <ul className="px-6">
-      <MenuItemBottom i={1}>Kenapa Pilih Kami</MenuItemBottom>
-      <MenuItemBottom i={2}>Tentang</MenuItemBottom>
-      <MenuItemBottom i={3}>Keberlanjutan</MenuItemBottom>
-      <MenuItemBottom i={6}>Kontak</MenuItemBottom>
+      <MenuItemBottom i={1} onClick={onClick}>
+        Kenapa Pilih Kami
+      </MenuItemBottom>
+      <MenuItemBottom i={2} onClick={onClick}>
+        Tentang
+      </MenuItemBottom>
+      <MenuItemBottom i={3} onClick={onClick}>
+        Keberlanjutan
+      </MenuItemBottom>
+      <MenuItemBottom
+        i={4}
+        onClick={onClick}
+        href="/contact-us"
+        isActive={activePath === "/contact-us"}
+      >
+        Kontak
+      </MenuItemBottom>
     </ul>
   );
 };
 const SheetMenu = () => {
+  const pathname = usePathname();
   const [isOpen, toggleOpen] = useCycle(false, true);
+
   return (
     <Sheet open={isOpen}>
       <SheetTrigger asChild>
@@ -170,11 +213,11 @@ const SheetMenu = () => {
           </div>
           <nav className="relative py-6">
             <div
-              className={`px-6 mb-2 tracking-wider font-thin text-xs uppercase text-stone-400`}
+              className={`font-mono px-6 mb-2 tracking-wider text-sm uppercase text-stone-400`}
             >
               Discover
             </div>
-            <Navigation />
+            <Navigation onClick={() => toggleOpen()} />
             <motion.div
               animate={{ width: "100%" }}
               initial={{ width: "0%" }}
@@ -190,11 +233,14 @@ const SheetMenu = () => {
             animate={isOpen ? "open" : "closed"}
           >
             <div
-              className={`px-6 mb-2 tracking-wider font-thin text-xs uppercase text-stone-400 `}
+              className={`font-mono px-6 mb-2 tracking-wider text-sm uppercase text-stone-400 `}
             >
               Pelajari
             </div>
-            <NavigationBottom />
+            <NavigationBottom
+              onClick={() => toggleOpen()}
+              activePath={pathname}
+            />
           </motion.nav>
         </div>
       </SheetContent>

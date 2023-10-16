@@ -82,13 +82,13 @@ const CategorySlider = () => {
   });
 
   return (
-    <div className="bg-category-section pt-16 ">
+    <div className="container bg-category-section pt-16 ">
       <div className="text-white">
         <Reveal>
-          <h1 className="text-2xl font-serif text-center mb-6">Paket Wisata</h1>
+          <h1 className="text-3xl font-serif text-center mb-6">Paket Wisata</h1>
         </Reveal>
         <Reveal transition={{ delay: 0.4, duration: 0.5 }}>
-          <p className="text-center font-sans font-thin tracking-wide leading-relaxed mb-6 px-6 text-gray-300">
+          <p className="text-center font-sans tracking-wider mb-6">
             Kami menyediakan banyak pilihan paket wisata untuk memenuhi liburan
             menyenangkan anda.
           </p>
@@ -147,7 +147,7 @@ const CategorySlider = () => {
           </>
         )}
       </div>
-      <div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 mt-3">
+      <div className="around-lines-grid mt-4">
         <Reveal
           className="justify-self-end"
           hidden={{ width: "0%" }}
@@ -156,15 +156,11 @@ const CategorySlider = () => {
           <motion.div className="bg-gray-300 h-[1px]" />
         </Reveal>
         <Reveal>
-          <Button variant="outline" className="bg-transparent">
+          <Button variant="outline" className="uppercase tracking-wider">
             View More
           </Button>
         </Reveal>
-        <Reveal
-          className="ustify-self-end"
-          hidden={{ width: "0%" }}
-          visible={{ width: "100%" }}
-        >
+        <Reveal hidden={{ width: "0%" }} visible={{ width: "100%" }}>
           <motion.div className="bg-gray-300 h-[1px]" />
         </Reveal>
       </div>
